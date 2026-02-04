@@ -85,44 +85,44 @@ The Excel file used for testing must follow this structure:
 mvn test
 ```
 
-##Key Features
+## Key Features
 
-Data-driven testing using Excel
+- Data-driven testing using Excel
 
-Page Object Model (POM) design pattern
+- Page Object Model (POM) design pattern
 
-Dynamic waiting for new chatbot responses
+- Dynamic waiting for new chatbot responses
 
-No hard-coded sleeps
+- No hard-coded sleeps
 
-Stable and reliable automation execution
+- Stable and reliable automation execution
 
-Clean separation between test logic, page logic, and test data
+- Clean separation between test logic, page logic, and test data
 
-##⚠️ Important Notes
+## ⚠️ Important Notes
 
-Excel files inside resources are read-only during execution
+- Excel files inside resources are read-only during execution
 
-All test outputs are written to the target folder
+- All test outputs are written to the target folder
 
-Chatbot responses are captured based on newly generated bot messages to avoid duplicated or incorrect answers
+- Chatbot responses are captured based on newly generated bot messages to avoid duplicated or incorrect answers
 
-##🚀 Future Improvements
+## 🚀 Future Improvements
 
-Add PASS / FAIL status for each test case
+- Add PASS / FAIL status for each test case
 
-Validate chatbot responses using keywords or rules
+- Validate chatbot responses using keywords or rules
 
-Add timestamps for chatbot replies
+- Add timestamps for chatbot replies
 
-Support multiple Excel sheets
+- Support multiple Excel sheets
 
-Integrate with CI/CD pipelines
+- Integrate with CI/CD pipelines
 
-Add AI hallucination detection scenarios
+- Add AI hallucination detection scenarios
 
-##👤 Author
+## 👤 Author
 
 Ibrahim Arafa
-Junior Software Tester | ISTQB® Certified Tester (CTFL)
+Junior Software Tester | ISTQB® Certified Tester (CTFL & MAT)
 Manual Testing • Automation Testing • API Testing
