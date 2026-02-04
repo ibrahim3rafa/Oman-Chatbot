@@ -25,7 +25,7 @@ Test data is managed through Excel, making it easy for testers, stakeholders, or
 ---
 
 ## 📂 Project Structure
-
+```bash
 src
 ├── main
 │ └── java
@@ -43,7 +43,7 @@ src
 │
 └── target
 └── chatbot_data.xlsx
-
+```
 
 ---
 
@@ -83,7 +83,7 @@ The Excel file used for testing must follow this structure:
 ### Run using Maven
 ```bash
 mvn test
-
+```
 
 ##Key Features
 
