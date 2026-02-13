@@ -2,8 +2,7 @@ package utils;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -44,20 +43,21 @@ public class ExcelUtil {
                 .getStringCellValue();
     }
 /*
-    public void writeAnswer(int rowIndex, String answer) throws IOException {
-
-        Row row = sheet.getRow(rowIndex);
-        if (row == null) {
-            row = sheet.createRow(rowIndex);
-        }
-
-        Cell cell = row.getCell(1, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
-        cell.setCellValue(answer);
-
-        FileOutputStream fos = new FileOutputStream(outputFilePath);
-        workbook.write(fos);
-        fos.close();
-    }
+//    public void writeAnswer(int rowIndex, String answer) throws IOException {
+//
+//        Row row = sheet.getRow(rowIndex);
+//        if (row == null) {
+//            row = sheet.createRow(rowIndex);
+//        }
+//
+//        Cell cell = row.getCell(1, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
+//        cell.setCellValue(answer);
+//
+//        FileOutputStream fos = new FileOutputStream(outputFilePath);
+//        workbook.write(fos);
+//        fos.close();
+//    }
+//
 */
 
 

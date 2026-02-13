@@ -26,12 +26,11 @@ public class ChatbotExcelTest {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
-        driver.get("https://conf-tions-suzuki-reactions.trycloudflare.com/");
+        driver.get("https://journalism-roulette-ranch-written.trycloudflare.com/");
         wait.until(ExpectedConditions.visibilityOfElementLocated(chatButton));
         driver.findElement(chatButton).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(disclaimerAcceptButton));
         driver.findElement(disclaimerAcceptButton).click();
-
         chatbot = new ChatbotPage(driver);
         excel = new ExcelUtil("chatbot_data.xlsx");
     }
@@ -51,7 +50,7 @@ public class ChatbotExcelTest {
 
     @AfterClass
     public void tearDown() throws InterruptedException {
-//        Thread.sleep(5000); // Just to visually confirm the last answer is written before closing
-        driver.quit();
+        Thread.sleep(5000); // Just to visually confirm the last answer is written before closing
+        // driver.quit();
     }
 }
