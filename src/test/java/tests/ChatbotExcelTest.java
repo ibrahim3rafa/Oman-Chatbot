@@ -1,14 +1,14 @@
 package tests;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 import pages.ChatbotPage;
 import utils.ExcelUtil;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.*;
 
 import java.time.Duration;
 
@@ -18,21 +18,41 @@ public class ChatbotExcelTest {
     private WebDriverWait wait;
     private ChatbotPage chatbot;
     private ExcelUtil excel;
-    private By chatButton = By.id("chatbot-button");
-    private By disclaimerAcceptButton = By.id("disclaimer-accept");
+    private WebElement shadowHost;
+    private SearchContext shadowRoot;
 
     @BeforeClass
     public void setup() throws Exception {
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         driver.manage().window().maximize();
-        driver.get("https://journalism-roulette-ranch-written.trycloudflare.com/");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(chatButton));
-        driver.findElement(chatButton).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(disclaimerAcceptButton));
-        driver.findElement(disclaimerAcceptButton).click();
-        chatbot = new ChatbotPage(driver);
+        driver.get("http://87.121.168.132/");
+
+        // wait for shadow host
+        shadowHost = wait.until(
+                ExpectedConditions.presenceOfElementLocated(By.id("e-chat"))
+        );
+
+        // get shadow root
+        shadowRoot = shadowHost.getShadowRoot();
+
+        // wait for chat button
+        WebElement chatButton = wait.until(d ->
+                shadowRoot.findElement(By.cssSelector("button"))
+        );
+
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", chatButton);
+
+        // wait for disclaimer accept button
+        WebElement startChat = wait.until(d ->
+                shadowRoot.findElement(By.cssSelector("#disclaimer-accept"))
+        );
+
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", startChat);
+
+        chatbot = new ChatbotPage(driver, wait, shadowHost, shadowRoot);
         excel = new ExcelUtil("chatbot_data.xlsx");
+
     }
 
     @Test
