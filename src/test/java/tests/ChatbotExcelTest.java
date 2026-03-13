@@ -69,8 +69,7 @@ public class ChatbotExcelTest {
     }
 
     @AfterClass
-    public void tearDown() throws InterruptedException {
-        Thread.sleep(5000); // Just to visually confirm the last answer is written before closing
-        // driver.quit();
+    public void tearDown() {
+        driver.quit();
     }
 }
